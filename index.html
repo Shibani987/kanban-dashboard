@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kanban Board</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Project workspace</p>
+        <h1>Kanban Board</h1>
+      </div>
+      <div class="topbar-actions">
+        <label class="search-wrap" for="searchInput">
+          <span aria-hidden="true">Search</span>
+          <input id="searchInput" type="search" placeholder="Find tasks">
+        </label>
+        <button class="primary-btn" id="addTaskBtn" type="button">+ Task</button>
+      </div>
+    </header>
+
+    <section class="metrics" aria-label="Board summary">
+      <article>
+        <span id="totalTasks">0</span>
+        <p>Total tasks</p>
+      </article>
+      <article>
+        <span id="progressTasks">0%</span>
+        <p>In progress</p>
+      </article>
+      <article>
+        <span id="doneTasks">0</span>
+        <p>Completed</p>
+      </article>
+      <article>
+        <span id="urgentTasks">0</span>
+        <p>High priority</p>
+      </article>
+    </section>
+
+    <section class="board" id="board" aria-label="Kanban board"></section>
+  </main>
+
+  <dialog class="task-dialog" id="taskDialog">
+    <form method="dialog" id="taskForm">
+      <div class="dialog-head">
+        <div>
+          <p class="eyebrow">Task details</p>
+          <h2 id="dialogTitle">Add task</h2>
+        </div>
+        <button class="icon-btn" id="closeDialogBtn" type="button" aria-label="Close">x</button>
+      </div>
+
+      <input type="hidden" id="taskId">
+
+      <label>
+        Title
+        <input id="taskTitle" type="text" placeholder="Design onboarding flow" required>
+      </label>
+
+      <label>
+        Description
+        <textarea id="taskDescription" rows="4" placeholder="Write a short task note"></textarea>
+      </label>
+
+      <div class="form-grid">
+        <label>
+          Status
+          <select id="taskStatus">
+            <option value="todo">To Do</option>
+            <option value="progress">In Progress</option>
+            <option value="review">Review</option>
+            <option value="done">Done</option>
+          </select>
+        </label>
+
+        <label>
+          Priority
+          <select id="taskPriority">
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="form-grid">
+        <label>
+          Owner
+          <input id="taskOwner" type="text" placeholder="Aarav">
+        </label>
+
+        <label>
+          Due date
+          <input id="taskDueDate" type="date">
+        </label>
+      </div>
+
+      <menu class="dialog-actions">
+        <button class="secondary-btn" id="deleteTaskBtn" type="button">Delete</button>
+        <button class="secondary-btn" id="cancelBtn" type="button">Cancel</button>
+        <button class="primary-btn" type="submit">Save task</button>
+      </menu>
+    </form>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
